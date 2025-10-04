@@ -3,7 +3,7 @@
 import { DashboardHeader } from "@/components/layout/DashboardHeader";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react"; 
+import { useEffect } from "react";
 import { DashboardSidebar } from "@/components/layout/DashboardSidebar";
 
 export default function DashboardLayout({

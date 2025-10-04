@@ -126,7 +126,10 @@ export function DashboardSidebar() {
       </nav>
 
       {/* Secondary Navigation */}
-      <div className="p-4 border-t border-gray-200 space-y-1">
+
+      <div
+        className={`border-t border-gray-200 space-y-1 transition-all duration-300 ${isCollapsed ? "p-2" : "p-4"}`}
+      >
         {secondaryNavigation.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
@@ -137,18 +140,18 @@ export function DashboardSidebar() {
               href={item.href}
               className={`
                 group flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-all duration-200
-                ${
-                  isActive
-                    ? "bg-gray-100 text-gray-900 shadow-sm"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:shadow-sm"
-                }
+               ${
+                 isActive
+                   ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600 shadow-sm"
+                   : "text-gray-700 hover:bg-gray-50 hover:text-gray-900 hover:shadow-sm"
+               }
               `}
               title={isCollapsed ? item.name : undefined}
             >
               <Icon
                 className={`h-5 w-5 transition-colors ${
                   isActive
-                    ? "text-gray-700"
+                    ? "text-blue-600"
                     : "text-gray-400 group-hover:text-gray-600"
                 }`}
               />
