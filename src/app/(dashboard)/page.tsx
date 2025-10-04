@@ -1,16 +1,17 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { Borrower } from "../../types";
-import { apiClient } from "../../lib/api";
-import { Card } from "../../components/ui/Card";
-import { Button } from "../../components/ui/Button";
-import { AddBorrowerModal } from "../../components/borrowers/AddBorrowerModal";
+import { useState, useEffect } from 'react';
+import { Borrower } from '../../types';
+import { apiClient } from '../../lib/api';
+import { Card } from '../../components/ui/Card';
+import { Button } from '../../components/ui/Button';
+import { AddBorrowerModal } from '../../components/borrowers/AddBorrowerModal';
+import Link from 'next/link';
 
 export default function DashboardPage() {
   const [borrowers, setBorrowers] = useState<Borrower[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const loadBorrowers = async () => {
@@ -18,7 +19,7 @@ export default function DashboardPage() {
       const data = await apiClient.getBorrowers();
       setBorrowers(data);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load borrowers");
+      setError(err instanceof Error ? err.message : 'Failed to load borrowers');
     } finally {
       setLoading(false);
     }
@@ -29,11 +30,17 @@ export default function DashboardPage() {
   }, []);
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-IN", {
-      style: "currency",
-      currency: "INR",
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
     }).format(amount);
   };
+
+  // Calculate dashboard stats
+  const totalBorrowed = borrowers.reduce((sum, borrower) => sum + borrower.total_borrowed, 0);
+  const totalRepaid = borrowers.reduce((sum, borrower) => sum + borrower.total_repaid, 0);
+  const totalBalance = borrowers.reduce((sum, borrower) => sum + borrower.balance, 0);
+  const activeBorrowers = borrowers.filter(borrower => borrower.balance > 0).length;
 
   if (loading) {
     return (
@@ -45,100 +52,168 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
+      {/* Dashboard Header */}
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-600 mt-2">
-            Manage your loans and track repayments
-          </p>
+          <p className="text-gray-600 mt-2">Welcome back! Here's your lending overview.</p>
         </div>
-        <Button onClick={() => setIsModalOpen(true)}>Add Borrower</Button>
+        <Button onClick={() => setIsModalOpen(true)}>
+          + Add Borrower
+        </Button>
       </div>
 
-      {error && (
-        <div className="p-4 text-sm text-red-600 bg-red-50 rounded-lg border border-red-200">
-          {error}
-        </div>
-      )}
-
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {borrowers.map((borrower) => (
-          <Card
-            key={borrower.id}
-            className="hover:shadow-md transition-shadow"
-            hover
-          >
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">
-                {borrower.name}
-              </h3>
-              <span
-                className={`px-2 py-1 text-xs font-medium rounded-full ${
-                  borrower.balance > 0
-                    ? "bg-red-100 text-red-800"
-                    : "bg-green-100 text-green-800"
-                }`}
-              >
-                {borrower.balance > 0 ? "Pending" : "Cleared"}
-              </span>
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Card className="p-6">
+          <div className="flex items-center">
+            <div className="p-2 bg-blue-100 rounded-lg">
+              <span className="text-2xl">💰</span>
             </div>
-
-            <div className="space-y-2 text-sm text-gray-600">
-              <div className="flex justify-between">
-                <span>Total Borrowed:</span>
-                <span className="font-medium">
-                  {formatCurrency(borrower.total_borrowed)}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span>Total Repaid:</span>
-                <span className="font-medium text-green-600">
-                  {formatCurrency(borrower.total_repaid)}
-                </span>
-              </div>
-              <div className="flex justify-between border-t pt-2">
-                <span className="font-medium">Balance:</span>
-                <span
-                  className={`font-bold ${
-                    borrower.balance > 0 ? "text-red-600" : "text-green-600"
-                  }`}
-                >
-                  {formatCurrency(borrower.balance)}
-                </span>
-              </div>
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Total Lent</p>
+              <p className="text-2xl font-bold text-gray-900">{formatCurrency(totalBorrowed)}</p>
             </div>
-          </Card>
-        ))}
-      </div>
-
-      {borrowers.length === 0 && (
-        <Card className="text-center py-16">
-          <div className="text-gray-500 max-w-sm mx-auto">
-            <svg
-              className="mx-auto h-16 w-16 mb-4 text-gray-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1}
-                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
-              No borrowers yet
-            </h3>
-            <p className="mb-6">
-              Add your first borrower to start tracking loans and repayments
-            </p>
-            <Button onClick={() => setIsModalOpen(true)}>
-              Add Your First Borrower
-            </Button>
           </div>
         </Card>
-      )}
+
+        <Card className="p-6">
+          <div className="flex items-center">
+            <div className="p-2 bg-green-100 rounded-lg">
+              <span className="text-2xl">🔄</span>
+            </div>
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Total Recovered</p>
+              <p className="text-2xl font-bold text-gray-900">{formatCurrency(totalRepaid)}</p>
+            </div>
+          </div>
+        </Card>
+
+        <Card className="p-6">
+          <div className="flex items-center">
+            <div className="p-2 bg-red-100 rounded-lg">
+              <span className="text-2xl">⏰</span>
+            </div>
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Pending</p>
+              <p className="text-2xl font-bold text-gray-900">{formatCurrency(totalBalance)}</p>
+            </div>
+          </div>
+        </Card>
+
+        <Card className="p-6">
+          <div className="flex items-center">
+            <div className="p-2 bg-purple-100 rounded-lg">
+              <span className="text-2xl">👥</span>
+            </div>
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Active Borrowers</p>
+              <p className="text-2xl font-bold text-gray-900">{activeBorrowers}</p>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      {/* Recent Borrowers Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Recent Borrowers */}
+        <Card className="p-6">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold text-gray-900">Recent Borrowers</h2>
+            <Link href="/dashboard/borrowers">
+              <Button variant="ghost" size="sm">
+                View All
+              </Button>
+            </Link>
+          </div>
+
+          {error && (
+            <div className="p-4 text-sm text-red-600 bg-red-50 rounded-lg border border-red-200 mb-4">
+              {error}
+            </div>
+          )}
+
+          <div className="space-y-4">
+            {borrowers.slice(0, 5).map((borrower) => (
+              <div key={borrower.id} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                <div className="flex items-center">
+                  <div className="h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
+                    <span className="text-blue-600 font-medium text-sm">
+                      {borrower.name.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-gray-900">{borrower.name}</p>
+                    <p className="text-xs text-gray-500">
+                      {borrower.balance > 0 ? 'Pending' : 'Cleared'}
+                    </p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className={`text-sm font-semibold ${
+                    borrower.balance > 0 ? 'text-red-600' : 'text-green-600'
+                  }`}>
+                    {formatCurrency(borrower.balance)}
+                  </p>
+                  <p className="text-xs text-gray-500">Balance</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {borrowers.length === 0 && (
+            <div className="text-center py-8 text-gray-500">
+              <span className="text-4xl mb-2 block">👥</span>
+              <p>No borrowers yet</p>
+              <Button 
+                onClick={() => setIsModalOpen(true)} 
+                className="mt-4"
+                size="sm"
+              >
+                Add Your First Borrower
+              </Button>
+            </div>
+          )}
+        </Card>
+
+        {/* Quick Actions */}
+        <Card className="p-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">Quick Actions</h2>
+          <div className="grid grid-cols-2 gap-4">
+            <Link href="/dashboard/loans">
+              <Card className="p-4 text-center hover:shadow-md transition-shadow cursor-pointer border-2 border-dashed border-gray-300 hover:border-blue-300">
+                <span className="text-3xl mb-2 block">💰</span>
+                <p className="font-medium text-gray-900">New Loan</p>
+                <p className="text-xs text-gray-500 mt-1">Record a new loan</p>
+              </Card>
+            </Link>
+
+            <Link href="/dashboard/repayments">
+              <Card className="p-4 text-center hover:shadow-md transition-shadow cursor-pointer border-2 border-dashed border-gray-300 hover:border-green-300">
+                <span className="text-3xl mb-2 block">🔄</span>
+                <p className="font-medium text-gray-900">Record Payment</p>
+                <p className="text-xs text-gray-500 mt-1">Add repayment</p>
+              </Card>
+            </Link>
+
+            <Link href="/dashboard/borrowers">
+              <Card className="p-4 text-center hover:shadow-md transition-shadow cursor-pointer border-2 border-dashed border-gray-300 hover:border-purple-300">
+                <span className="text-3xl mb-2 block">👥</span>
+                <p className="font-medium text-gray-900">Manage Borrowers</p>
+                <p className="text-xs text-gray-500 mt-1">View all borrowers</p>
+              </Card>
+            </Link>
+
+            <Link href="/dashboard/analytics">
+              <Card className="p-4 text-center hover:shadow-md transition-shadow cursor-pointer border-2 border-dashed border-gray-300 hover:border-orange-300">
+                <span className="text-3xl mb-2 block">📈</span>
+                <p className="font-medium text-gray-900">Analytics</p>
+                <p className="text-xs text-gray-500 mt-1">View reports</p>
+              </Card>
+            </Link>
+          </div>
+        </Card>
+      </div>
 
       <AddBorrowerModal
         isOpen={isModalOpen}

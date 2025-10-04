@@ -1,7 +1,6 @@
-"use client"
+"use client";
 import { useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
-import { Layout } from "@/components/layout/Layout";
 import { BorrowerList } from "@/components/borrowers/BorrowerList";
 import { useRouter } from "next/navigation";
 
@@ -28,10 +27,8 @@ export default function Dashboard() {
   }
 
   return (
-    <Layout>
-      <div className="px-4 sm:px-0">
-        <BorrowerList />
-      </div>
-    </Layout>
+    <div className="space-y-6">
+      <BorrowerList />
+    </div>
   );
 }

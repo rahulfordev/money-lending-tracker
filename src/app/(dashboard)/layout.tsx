@@ -1,9 +1,10 @@
 "use client";
 
-import { DashboardNav } from "@/components/layout/DashboardNav";
-import { useAuth } from "@/hooks/useAuth";
+import { DashboardHeader } from "@/components/layout/DashboardHeader";
+import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect } from "react"; 
+import { DashboardSidebar } from "@/components/layout/DashboardSidebar";
 
 export default function DashboardLayout({
   children,
@@ -33,8 +34,11 @@ export default function DashboardLayout({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <DashboardNav />
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">{children}</main>
+      <DashboardHeader />
+      <div className="flex">
+        <DashboardSidebar />
+        <main className="flex-1 p-6">{children}</main>
+      </div>
     </div>
   );
 }
