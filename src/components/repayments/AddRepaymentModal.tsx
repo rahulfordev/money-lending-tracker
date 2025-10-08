@@ -89,7 +89,7 @@ export function AddRepaymentModal({
             value={formData.loan_id}
             onChange={(e) => handleChange("loan_id", e.target.value)}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
           >
             <option value="">Select a loan</option>
             {activeLoans.map((loan) => (
@@ -131,14 +131,14 @@ export function AddRepaymentModal({
             value={formData.note}
             onChange={(e) => handleChange("note", e.target.value)}
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="Add any notes about this payment (e.g., payment method, reference number)"
           />
         </div>
 
-        <div className="bg-blue-50 p-4 rounded-lg">
-          <h4 className="text-sm font-medium text-blue-800 mb-2">💡 Tips</h4>
-          <ul className="text-xs text-blue-700 space-y-1">
+        <div className="bg-primary-50 p-4 rounded-lg">
+          <h4 className="text-sm font-medium text-primary-800 mb-2">💡 Tips</h4>
+          <ul className="text-xs text-primary-700 space-y-1">
             <li>• Record payments as soon as you receive them</li>
             <li>• Include reference numbers in notes for tracking</li>
             <li>• Regular updates help maintain accurate balance records</li>

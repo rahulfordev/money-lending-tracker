@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Loan, Borrower } from '../../types';
-import { apiClient } from '../../lib/api';
-import { Modal } from '../ui/Modal';
-import { Input } from '../ui/Input';
-import { Button } from '../ui/Button';
+import { useState, useEffect } from "react";
+import { Loan, Borrower } from "../../types";
+import { apiClient } from "../../lib/api";
+import { Modal } from "../ui/Modal";
+import { Input } from "../ui/Input";
+import { Button } from "../ui/Button";
 
 interface EditLoanModalProps {
   isOpen: boolean;
@@ -15,23 +15,29 @@ interface EditLoanModalProps {
   borrowers: Borrower[];
 }
 
-export function EditLoanModal({ isOpen, onClose, onLoanUpdated, loan, borrowers }: EditLoanModalProps) {
+export function EditLoanModal({
+  isOpen,
+  onClose,
+  onLoanUpdated,
+  loan,
+  borrowers,
+}: EditLoanModalProps) {
   const [formData, setFormData] = useState({
-    borrower_id: '',
-    amount: '',
-    loan_date: '',
-    description: ''
+    borrower_id: "",
+    amount: "",
+    loan_date: "",
+    description: "",
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (loan) {
       setFormData({
         borrower_id: loan.borrower_id.toString(),
         amount: loan.amount.toString(),
-        loan_date: loan.loan_date.split('T')[0],
-        description: loan.description || ''
+        loan_date: loan.loan_date.split("T")[0],
+        description: loan.description || "",
       });
     }
   }, [loan]);
@@ -40,7 +46,7 @@ export function EditLoanModal({ isOpen, onClose, onLoanUpdated, loan, borrowers 
     e.preventDefault();
     if (!loan) return;
 
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
@@ -49,20 +55,20 @@ export function EditLoanModal({ isOpen, onClose, onLoanUpdated, loan, borrowers 
         loan_date: formData.loan_date,
         description: formData.description || undefined,
       });
-      
+
       onLoanUpdated();
       onClose();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to update loan');
+      setError(err instanceof Error ? err.message : "Failed to update loan");
     } finally {
       setLoading(false);
     }
   };
 
   const handleChange = (field: string, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -83,15 +89,20 @@ export function EditLoanModal({ isOpen, onClose, onLoanUpdated, loan, borrowers 
           </label>
           <select
             value={formData.borrower_id}
-            onChange={(e) => handleChange('borrower_id', e.target.value)}
+            onChange={(e) => handleChange("borrower_id", e.target.value)}
             disabled
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-100"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-gray-100"
           >
             <option value={formData.borrower_id}>
-              {borrowers.find(b => b.id === parseInt(formData.borrower_id))?.name}
+              {
+                borrowers.find((b) => b.id === parseInt(formData.borrower_id))
+                  ?.name
+              }
             </option>
           </select>
-          <p className="text-xs text-gray-500 mt-1">Borrower cannot be changed after loan creation</p>
+          <p className="text-xs text-gray-500 mt-1">
+            Borrower cannot be changed after loan creation
+          </p>
         </div>
 
         <Input
@@ -100,7 +111,7 @@ export function EditLoanModal({ isOpen, onClose, onLoanUpdated, loan, borrowers 
           step="0.01"
           min="0"
           value={formData.amount}
-          onChange={(e) => handleChange('amount', e.target.value)}
+          onChange={(e) => handleChange("amount", e.target.value)}
           required
           placeholder="Enter loan amount"
         />
@@ -109,7 +120,7 @@ export function EditLoanModal({ isOpen, onClose, onLoanUpdated, loan, borrowers 
           label="Loan Date"
           type="date"
           value={formData.loan_date}
-          onChange={(e) => handleChange('loan_date', e.target.value)}
+          onChange={(e) => handleChange("loan_date", e.target.value)}
           required
         />
 
@@ -119,9 +130,9 @@ export function EditLoanModal({ isOpen, onClose, onLoanUpdated, loan, borrowers 
           </label>
           <textarea
             value={formData.description}
-            onChange={(e) => handleChange('description', e.target.value)}
+            onChange={(e) => handleChange("description", e.target.value)}
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="Optional description or purpose of the loan"
           />
         </div>

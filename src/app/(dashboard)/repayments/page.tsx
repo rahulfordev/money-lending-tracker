@@ -184,7 +184,7 @@ export default function RepaymentsPage() {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-12">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -224,7 +224,7 @@ export default function RepaymentsPage() {
 
         <Card className="p-6">
           <div className="flex items-center">
-            <div className="p-2 bg-blue-100 rounded-lg">
+            <div className="p-2 bg-primary-100 rounded-lg">
               <span className="text-2xl">💰</span>
             </div>
             <div className="ml-4">
@@ -270,7 +270,7 @@ export default function RepaymentsPage() {
             <select
               value={filterBorrower}
               onChange={(e) => setFilterBorrower(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             >
               <option value="">All Borrowers</option>
               {uniqueBorrowers.map((borrower) => (

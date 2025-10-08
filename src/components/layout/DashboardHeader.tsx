@@ -13,7 +13,7 @@ export function DashboardHeader() {
           {/* Left side - Logo and Title */}
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="h-8 w-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">₹</span>
               </div>
               <span className="ml-2 text-xl font-bold text-gray-900 hidden sm:block">
@@ -54,7 +54,7 @@ export function DashboardHeader() {
               </div>
 
               {/* User Avatar */}
-              <div className="h-8 w-8 bg-blue-600 rounded-full flex items-center justify-center">
+              <div className="h-8 w-8 bg-primary rounded-full flex items-center justify-center">
                 <span className="text-white text-sm font-medium">
                   {user?.name?.charAt(0).toUpperCase()}
                 </span>

@@ -168,7 +168,7 @@ export default function SettingsPage() {
                     w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors
                     ${
                       activeTab === tab.id
-                        ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600"
+                        ? "bg-primary-50 text-primary-700 border-r-2 border-primary"
                         : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
                     }
                   `}
@@ -345,11 +345,11 @@ export default function SettingsPage() {
                   </div>
                 </div>
 
-                <div className="bg-blue-50 p-4 rounded-lg mt-4">
-                  <h4 className="text-sm font-medium text-blue-800 mb-2">
+                <div className="bg-primary-50 p-4 rounded-lg mt-4">
+                  <h4 className="text-sm font-medium text-primary-800 mb-2">
                     Password Requirements
                   </h4>
-                  <ul className="text-xs text-blue-700 space-y-1">
+                  <ul className="text-xs text-primary-700 space-y-1">
                     <li>• At least 6 characters long</li>
                     <li>• Different from your current password</li>
                     <li>
@@ -401,7 +401,7 @@ export default function SettingsPage() {
                         }
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                     </label>
                   </div>
 
@@ -420,7 +420,7 @@ export default function SettingsPage() {
                           sessionTimeout: parseInt(e.target.value),
                         })
                       }
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     >
                       <option value={15}>15 minutes</option>
                       <option value={30}>30 minutes</option>
@@ -451,7 +451,7 @@ export default function SettingsPage() {
                         }
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                     </label>
                   </div>
                 </div>
@@ -502,7 +502,7 @@ export default function SettingsPage() {
                       }
                       className="sr-only peer"
                     />
-                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                   </label>
                 </div>
 
@@ -542,7 +542,7 @@ export default function SettingsPage() {
                     onChange={(e) =>
                       setAppearance({ ...appearance, theme: e.target.value })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   >
                     <option value="light">Light</option>
                     <option value="dark">Dark</option>
@@ -559,7 +559,7 @@ export default function SettingsPage() {
                     onChange={(e) =>
                       setAppearance({ ...appearance, language: e.target.value })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   >
                     <option value="en">English</option>
                     <option value="hi">Hindi</option>
@@ -577,7 +577,7 @@ export default function SettingsPage() {
                     onChange={(e) =>
                       setAppearance({ ...appearance, currency: e.target.value })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   >
                     <option value="INR">Indian Rupee (₹)</option>
                     <option value="USD">US Dollar ($)</option>
@@ -598,7 +598,7 @@ export default function SettingsPage() {
                         dateFormat: e.target.value,
                       })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   >
                     <option value="DD/MM/YYYY">DD/MM/YYYY</option>
                     <option value="MM/DD/YYYY">MM/DD/YYYY</option>
@@ -632,7 +632,7 @@ export default function SettingsPage() {
               </div>
 
               <div className="space-y-6">
-                <div className="p-6 border border-gray-200 rounded-lg bg-blue-50">
+                <div className="p-6 border border-gray-200 rounded-lg bg-primary-50">
                   <h3 className="font-medium text-gray-900 mb-2">
                     Export Data
                   </h3>

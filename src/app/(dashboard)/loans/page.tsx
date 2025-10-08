@@ -5,7 +5,7 @@ import { Loan, Borrower } from "../../../types";
 import { apiClient } from "../../../lib/api";
 import { Card } from "../../../components/ui/Card";
 import { Button } from "../../../components/ui/Button";
-import { Input } from "../../../components/ui/Input"; 
+import { Input } from "../../../components/ui/Input";
 import { AddLoanModal } from "@/components/loans/AddLoanModal";
 import { EditLoanModal } from "@/components/loans/EditLoanModal";
 
@@ -111,7 +111,7 @@ export default function LoansPage() {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-12">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -131,7 +131,7 @@ export default function LoansPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="p-6">
           <div className="flex items-center">
-            <div className="p-2 bg-blue-100 rounded-lg">
+            <div className="p-2 bg-primary-100 rounded-lg">
               <span className="text-2xl">💰</span>
             </div>
             <div className="ml-4">
@@ -222,7 +222,7 @@ export default function LoansPage() {
                       <p className="text-gray-600 mt-1">{loan.description}</p>
                     )}
                   </div>
-                  <span className="px-3 py-1 text-sm font-medium bg-blue-100 text-blue-800 rounded-full">
+                  <span className="px-3 py-1 text-sm font-medium bg-primary-100 text-primary-800 rounded-full">
                     {formatCurrency(loan.amount)}
                   </span>
                 </div>

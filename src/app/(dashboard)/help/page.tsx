@@ -205,9 +205,9 @@ export default function HelpPage() {
       </div>
 
       {/* Search Section */}
-      <Card className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <Card className="p-6 bg-gradient-to-r from-primary-50 to-indigo-50">
         <div className="text-center max-w-2xl mx-auto">
-          <HelpCircle className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+          <HelpCircle className="h-12 w-12 text-primary mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             How can we help you?
           </h2>
@@ -236,11 +236,11 @@ export default function HelpPage() {
               className="p-6 hover:shadow-lg transition-shadow cursor-pointer group"
             >
               <div className="flex items-start space-x-4">
-                <div className="p-2 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
-                  <Icon className="h-6 w-6 text-blue-600" />
+                <div className="p-2 bg-primary-100 rounded-lg group-hover:bg-primary-200 transition-colors">
+                  <Icon className="h-6 w-6 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
                     {guide.title}
                   </h3>
                   <p className="text-sm text-gray-600 mb-3">
@@ -276,7 +276,7 @@ export default function HelpPage() {
                     w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors
                     ${
                       activeCategory === category.id
-                        ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600"
+                        ? "bg-primary-50 text-primary-700 border-r-2 border-primary"
                         : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
                     }
                   `}
@@ -365,8 +365,8 @@ export default function HelpPage() {
                 key={index}
                 className="p-6 text-center hover:shadow-lg transition-shadow"
               >
-                <div className="p-3 bg-blue-100 rounded-full w-12 h-12 mx-auto mb-4 flex items-center justify-center">
-                  <Icon className="h-6 w-6 text-blue-600" />
+                <div className="p-3 bg-primary-100 rounded-full w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                  <Icon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">
                   {method.title}

@@ -197,7 +197,7 @@ export default function AnalyticsPage() {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-12">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -224,7 +224,7 @@ export default function AnalyticsPage() {
           <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value as any)}
-            className="px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
           >
             <option value="7days">Last 7 Days</option>
             <option value="30days">Last 30 Days</option>
@@ -245,7 +245,7 @@ export default function AnalyticsPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         <Card className="p-6">
           <div className="flex items-center">
-            <div className="p-2 bg-blue-100 rounded-lg">
+            <div className="p-2 bg-primary-100 rounded-lg">
               <span className="text-2xl">💰</span>
             </div>
             <div className="ml-4">
@@ -349,7 +349,7 @@ export default function AnalyticsPage() {
                   <div className="flex space-x-1">
                     {/* Loans Bar */}
                     <div
-                      className="h-6 bg-blue-500 rounded-l flex items-center justify-center"
+                      className="h-6 bg-primary-500 rounded-l flex items-center justify-center"
                       style={{
                         width: `${(month.loans / Math.max(...data.monthlyData.map((m) => m.loans))) * 100}%`,
                       }}
@@ -376,7 +376,7 @@ export default function AnalyticsPage() {
                   </div>
                 </div>
                 <div className="text-right w-24">
-                  <div className="text-sm text-blue-600 font-medium">
+                  <div className="text-sm text-primary font-medium">
                     {formatCurrency(month.loans)}
                   </div>
                   <div className="text-sm text-green-600 font-medium">
@@ -388,7 +388,7 @@ export default function AnalyticsPage() {
           </div>
           <div className="flex items-center justify-center mt-4 space-x-4 text-xs text-gray-500">
             <div className="flex items-center">
-              <div className="w-3 h-3 bg-blue-500 rounded mr-1"></div>
+              <div className="w-3 h-3 bg-primary-500 rounded mr-1"></div>
               Loans Given
             </div>
             <div className="flex items-center">
@@ -410,8 +410,8 @@ export default function AnalyticsPage() {
                 className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
               >
                 <div className="flex items-center">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                    <span className="text-blue-600 text-sm font-medium">
+                  <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                    <span className="text-primary text-sm font-medium">
                       {borrower.name.charAt(0).toUpperCase()}
                     </span>
                   </div>
@@ -520,13 +520,13 @@ export default function AnalyticsPage() {
             Quick Insights
           </h3>
           <div className="space-y-3">
-            <div className="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg">
-              <span className="text-blue-600 text-lg">💡</span>
+            <div className="flex items-start space-x-3 p-3 bg-primary-50 rounded-lg">
+              <span className="text-primary text-lg">💡</span>
               <div>
-                <p className="text-sm font-medium text-blue-800">
+                <p className="text-sm font-medium text-primary-800">
                   Recovery Performance
                 </p>
-                <p className="text-xs text-blue-700">
+                <p className="text-xs text-primary-700">
                   Your overall recovery rate is{" "}
                   {formatPercentage(data.stats.recoveryRate)}
                 </p>
@@ -588,8 +588,8 @@ export default function AnalyticsPage() {
               className="flex items-center justify-between p-3 border border-gray-200 rounded-lg"
             >
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 text-sm">💰</span>
+                <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-primary text-sm">💰</span>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900">

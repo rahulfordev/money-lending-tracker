@@ -43,10 +43,10 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-indigo-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <div className="mx-auto h-12 w-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+          <div className="mx-auto h-12 w-12 bg-primary rounded-xl flex items-center justify-center mb-4">
             <span className="text-white font-bold text-lg">₹</span>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -119,7 +119,7 @@ export default function RegisterPage() {
               Already have an account?{" "}
               <Link
                 href="/login"
-                className="text-blue-600 hover:text-blue-700 font-medium"
+                className="text-primary hover:text-primary-700 font-medium"
               >
                 Sign in
               </Link>

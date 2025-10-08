@@ -104,7 +104,7 @@ export function DashboardSidebar() {
                 group flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-all duration-200
                 ${
                   isActive
-                    ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600 shadow-sm"
+                    ? "bg-primary-50 text-primary-700 border-r-2 border-primary shadow-sm"
                     : "text-gray-700 hover:bg-gray-50 hover:text-gray-900 hover:shadow-sm"
                 }
               `}
@@ -113,7 +113,7 @@ export function DashboardSidebar() {
               <Icon
                 className={`h-5 w-5 transition-colors ${
                   isActive
-                    ? "text-blue-600"
+                    ? "text-primary"
                     : "text-gray-400 group-hover:text-gray-600"
                 }`}
               />
@@ -142,7 +142,7 @@ export function DashboardSidebar() {
                 group flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-all duration-200
                ${
                  isActive
-                   ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600 shadow-sm"
+                   ? "bg-primary-50 text-primary-700 border-r-2 border-primary shadow-sm"
                    : "text-gray-700 hover:bg-gray-50 hover:text-gray-900 hover:shadow-sm"
                }
               `}
@@ -151,7 +151,7 @@ export function DashboardSidebar() {
               <Icon
                 className={`h-5 w-5 transition-colors ${
                   isActive
-                    ? "text-blue-600"
+                    ? "text-primary"
                     : "text-gray-400 group-hover:text-gray-600"
                 }`}
               />
@@ -165,19 +165,19 @@ export function DashboardSidebar() {
 
       {/* Quick Stats (Visible when expanded) */}
       {!isCollapsed && (
-        <div className="p-4 border-t border-gray-200 bg-gradient-to-br from-gray-50 to-blue-50/30">
+        <div className="p-4 border-t border-gray-200 bg-gradient-to-br from-gray-50 to-primary-50/30">
           <div className="text-xs font-semibold text-gray-600 mb-3 uppercase tracking-wide">
             Quick Stats
           </div>
           <div className="space-y-3">
             <div className="flex justify-between items-center p-2 bg-white rounded-lg border border-gray-200 shadow-xs">
               <div className="flex items-center">
-                <div className="p-1.5 bg-blue-100 rounded-md">
-                  <Hand className="h-3.5 w-3.5 text-blue-600" />
+                <div className="p-1.5 bg-primary-100 rounded-md">
+                  <Hand className="h-3.5 w-3.5 text-primary" />
                 </div>
                 <span className="text-sm text-gray-600 ml-2">Active Loans</span>
               </div>
-              <span className="text-sm font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">
+              <span className="text-sm font-semibold text-primary bg-primary-50 px-2 py-1 rounded">
                 12
               </span>
             </div>
@@ -211,14 +211,14 @@ export function DashboardSidebar() {
 
       {/* Mini Stats (Visible when collapsed) */}
       {isCollapsed && (
-        <div className="p-3 border-t border-gray-200 bg-gradient-to-br from-gray-50 to-blue-50/30">
+        <div className="p-3 border-t border-gray-200 bg-gradient-to-br from-gray-50 to-primary-50/30">
           <div className="space-y-3">
             <div
               className="flex flex-col items-center p-2 bg-white rounded-lg border border-gray-200 shadow-xs cursor-help"
               title="Active Loans"
             >
-              <Hand className="h-4 w-4 text-blue-600" />
-              <span className="text-xs font-semibold text-blue-600 mt-1">
+              <Hand className="h-4 w-4 text-primary" />
+              <span className="text-xs font-semibold text-primary mt-1">
                 12
               </span>
             </div>

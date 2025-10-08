@@ -81,7 +81,7 @@ export function AddLoanModal({
             value={formData.borrower_id}
             onChange={(e) => handleChange("borrower_id", e.target.value)}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
           >
             <option value="">Select a borrower</option>
             {borrowers.map((borrower) => (
@@ -119,7 +119,7 @@ export function AddLoanModal({
             value={formData.description}
             onChange={(e) => handleChange("description", e.target.value)}
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="Optional description or purpose of the loan"
           />
         </div>
