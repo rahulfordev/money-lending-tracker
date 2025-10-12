@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Repayment, Loan, Borrower } from "../../../types";
-import { apiClient } from "../../../lib/api";
-import { Card } from "../../../components/ui/Card";
-import { Button } from "../../../components/ui/Button";
-import { Input } from "../../../components/ui/Input";
+import { Repayment, Loan, Borrower } from "../../../../types";
+import { apiClient } from "../../../../lib/api";
+import { Card } from "../../../../components/ui/Card";
+import { Button } from "../../../../components/ui/Button";
+import { Input } from "../../../../components/ui/Input";
 import { EditRepaymentModal } from "@/components/repayments/EditRepaymentModal";
 import { AddRepaymentModal } from "@/components/repayments/AddRepaymentModal";
 

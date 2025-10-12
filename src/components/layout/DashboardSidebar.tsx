@@ -23,22 +23,22 @@ const navigation = [
   },
   {
     name: "Borrowers",
-    href: "/borrowers",
+    href: "/dashboard/borrowers",
     icon: Users,
   },
   {
     name: "Loans",
-    href: "/loans",
+    href: "/dashboard/loans",
     icon: Hand,
   },
   {
     name: "Repayments",
-    href: "/repayments",
+    href: "/dashboard/repayments",
     icon: Repeat,
   },
   {
     name: "Analytics",
-    href: "/analytics",
+    href: "/dashboard/analytics",
     icon: BarChart3,
   },
 ];
@@ -46,12 +46,12 @@ const navigation = [
 const secondaryNavigation = [
   {
     name: "Settings",
-    href: "/settings",
+    href: "/dashboard/settings",
     icon: Settings,
   },
   {
     name: "Help & Support",
-    href: "/help",
+    href: "/dashboard/help",
     icon: HelpCircle,
   },
 ];

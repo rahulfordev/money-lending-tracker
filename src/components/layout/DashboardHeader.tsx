@@ -1,10 +1,15 @@
 "use client";
 
-import { useAuth } from "../../hooks/useAuth";
 import { Button } from "../ui/Button";
 
 export function DashboardHeader() {
-  const { user, logout } = useAuth();
+  const { user, logout } = {
+    user: {
+      name: "John Doe",
+      email: "4o0oU@example.com",
+    },
+    logout: () => {},
+  };
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">

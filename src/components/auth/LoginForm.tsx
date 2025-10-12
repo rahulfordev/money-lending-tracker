@@ -1,31 +1,46 @@
 "use client";
-
-import { useState } from "react";
-
+import { useRouter, useSearchParams } from "next/navigation";
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
 import Link from "next/link";
-import { useAuth } from "@/hooks/useAuth";
-import { Card } from "../ui/Card";
-import { Input } from "../ui/Input";
-import { Button } from "../ui/Button";
+import { useLoginMutation } from "@/apis/mutations/auth_mutations";
+import toast from "react-hot-toast";
+import Cookies from "js-cookie";
+import { COOKIES_KEYS } from "@/configs/constants";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("next") || "/dashboard";
+
+  const { data, setData, submit, isLoading } = useLoginMutation({
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-    setLoading(true);
 
-    try {
-      await login(email, password);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Login failed");
-    } finally {
-      setLoading(false);
+    if (!data.email || !data.password) {
+      toast.error("Email and password are required");
+      return;
+    }
+
+    const response = await submit();
+    console.log(response);
+    if (response?.success) {
+      toast.dismiss();
+      toast.success("Login Successful!");
+      Cookies.set(COOKIES_KEYS.AUTH_TOKEN, response.token, {
+        expires: 7,
+        secure: true,
+        sameSite: "Strict",
+      });
+      router.push(callbackUrl);
+    } else {
+      toast.dismiss();
+      toast.error(response?.error || "Login failed");
     }
   };
 
@@ -44,17 +59,11 @@ export default function LoginPage() {
 
         <Card className="w-full" hover>
           <form onSubmit={handleSubmit} className="space-y-6">
-            {error && (
-              <div className="p-3 text-sm text-red-600 bg-red-50 rounded-lg border border-red-200">
-                {error}
-              </div>
-            )}
-
             <Input
               label="Email address"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={data.email}
+              onChange={(e) => setData("email", e.target.value)}
               required
               placeholder="Enter your email"
               autoComplete="email"
@@ -63,8 +72,8 @@ export default function LoginPage() {
             <Input
               label="Password"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={data.password}
+              onChange={(e) => setData("password", e.target.value)}
               required
               placeholder="Enter your password"
               autoComplete="current-password"
@@ -72,7 +81,7 @@ export default function LoginPage() {
 
             <Button
               type="submit"
-              loading={loading}
+              loading={isLoading}
               className="w-full"
               size="lg"
             >
@@ -84,7 +93,7 @@ export default function LoginPage() {
             <p className="text-gray-600">
               Don't have an account?{" "}
               <Link
-                href="/register"
+                href="/signup"
                 className="text-primary hover:text-primary-700 font-medium"
               >
                 Sign up

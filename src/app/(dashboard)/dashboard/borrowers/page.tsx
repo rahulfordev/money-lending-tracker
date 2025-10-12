@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Borrower } from "../../../types";
-import { apiClient } from "../../../lib/api";
-import { Card } from "../../../components/ui/Card";
-import { Button } from "../../../components/ui/Button";
-import { AddBorrowerModal } from "../../../components/borrowers/AddBorrowerModal";
+import { Borrower } from "../../../../types";
+import { apiClient } from "../../../../lib/api";
+import { Card } from "../../../../components/ui/Card";
+import { Button } from "../../../../components/ui/Button";
+import { AddBorrowerModal } from "../../../../components/borrowers/AddBorrowerModal";
 
 export default function BorrowersPage() {
   const [borrowers, setBorrowers] = useState<Borrower[]>([]);

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Loan, Borrower } from "../../../types";
-import { apiClient } from "../../../lib/api";
-import { Card } from "../../../components/ui/Card";
-import { Button } from "../../../components/ui/Button";
-import { Input } from "../../../components/ui/Input";
+import { Loan, Borrower } from "../../../../types";
+import { apiClient } from "../../../../lib/api";
+import { Card } from "../../../../components/ui/Card";
+import { Button } from "../../../../components/ui/Button";
+import { Input } from "../../../../components/ui/Input";
 import { AddLoanModal } from "@/components/loans/AddLoanModal";
 import { EditLoanModal } from "@/components/loans/EditLoanModal";
 
