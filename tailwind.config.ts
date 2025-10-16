@@ -195,6 +195,15 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      boxShadow: {
+        trello: "0px 4px 8px 0px #00000033",
+        small: "0px 4px 40.5px 0px #0000002E",
+        medium: "0px 4px 20px 0px #00000033",
+
+        large:
+          "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+        regular: "0px 4px 8px 0px #00000033",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

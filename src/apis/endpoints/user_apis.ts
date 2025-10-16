@@ -1,2 +1,2 @@
 export const userProfile = "/auth/me";
-export const logout = "/logout";
+export const logout = "/auth/logout";

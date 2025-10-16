@@ -12,7 +12,7 @@ export default function DashboardLayout({
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-lightPurple">
       <DashboardHeader />
       <div className="flex">
         <DashboardSidebar />

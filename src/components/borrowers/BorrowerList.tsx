@@ -4,6 +4,7 @@ import { apiClient } from "../../lib/api";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { AddBorrowerModal } from "./AddBorrowerModal";
+import { useAuth } from "@/hooks/useAuth";
 
 export function BorrowerList() {
   const [borrowers, setBorrowers] = useState<Borrower[]>([]);
