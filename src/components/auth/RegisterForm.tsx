@@ -100,6 +100,7 @@ export default function RegisterForm() {
               placeholder="Enter your password"
               autoComplete="new-password"
               helper="Must be at least 6 characters"
+              showPasswordToggle={true}
             />
 
             <Input
@@ -110,6 +111,7 @@ export default function RegisterForm() {
               required
               placeholder="Confirm your password"
               autoComplete="new-password"
+              showPasswordToggle={true}
             />
 
             <Button

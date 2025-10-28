@@ -77,6 +77,7 @@ export default function LoginPage() {
               required
               placeholder="Enter your password"
               autoComplete="current-password"
+              showPasswordToggle={true}
             />
 
             <Button
